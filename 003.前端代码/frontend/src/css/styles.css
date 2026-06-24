@@ -1,0 +1,629 @@
+/**
+ * 财务管家 - 共享样式表
+ * Financial Steward - Shared Styles
+ *
+ * 设计规范基于 DESIGN.md
+ */
+
+/* ============================================
+   CSS 变量 - Design Tokens
+   ============================================ */
+:root {
+    /* 主色调 - Primary Colors */
+    --color-primary: #864e5a;
+    --color-primary-container: #ffb7c5;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #7b4551;
+
+    /* 次要色 - Secondary Colors */
+    --color-secondary: #655781;
+    --color-secondary-container: #deccfd;
+    --color-on-secondary: #ffffff;
+    --color-on-secondary-container: #62547e;
+
+    /* 第三色 - Tertiary Colors */
+    --color-tertiary: #9b4053;
+    --color-tertiary-container: #ffb7c1;
+    --color-on-tertiary: #ffffff;
+    --color-on-tertiary-container: #8f364a;
+
+    /* 表面色 - Surface Colors */
+    --color-surface: #fbf9f8;
+    --color-surface-bright: #fbf9f8;
+    --color-surface-dim: #dbd9d9;
+    --color-surface-container: #efeded;
+    --color-surface-container-low: #f5f3f3;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-high: #eae8e7;
+    --color-surface-container-highest: #e4e2e2;
+
+    /* 背景色 - Background */
+    --color-background: #fbf9f8;
+    --color-on-background: #1b1c1c;
+
+    /* 文字颜色 - Text Colors */
+    --color-on-surface: #1b1c1c;
+    --color-on-surface-variant: #514345;
+    --color-outline: #837375;
+    --color-outline-variant: #d6c2c4;
+
+    /* 错误色 - Error Colors */
+    --color-error: #ba1a1a;
+    --color-error-container: #ffdad6;
+    --color-on-error: #ffffff;
+    --color-on-error-container: #93000a;
+
+    /* 特殊色 - Fixed Colors */
+    --color-primary-fixed: #ffd9df;
+    --color-primary-fixed-dim: #fbb3c1;
+    --color-on-primary-fixed: #360c19;
+    --color-on-primary-fixed-variant: #6b3743;
+    --color-secondary-fixed: #eaddff;
+    --color-secondary-fixed-dim: #d0bfef;
+    --color-on-secondary-fixed: #21143a;
+    --color-on-secondary-fixed-variant: #4d4068;
+    --color-tertiary-fixed: #ffd9dd;
+    --color-tertiary-fixed-dim: #ffb2bd;
+    --color-on-tertiary-fixed: #400014;
+    --color-on-tertiary-fixed-variant: #7d283c;
+
+    /* 语义颜色 - Semantic Colors */
+    --color-income: #7DD3C0;
+    --color-expense: #FF8A9B;
+    --color-cream-white: #FFF9F5;
+    --color-pale-pink-white: #FFF0F3;
+
+    /* 阴影 - Shadows */
+    --shadow-sm: 0 2px 8px -2px rgba(201, 184, 232, 0.08);
+    --shadow-md: 0 8px 32px -4px rgba(201, 184, 232, 0.1);
+    --shadow-lg: 0 12px 48px -12px rgba(134, 78, 90, 0.12);
+
+    /* 圆角 - Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* 间距 - Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-xxl: 48px;
+}
+
+/* ============================================
+   基础样式 - Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-cream-white);
+    color: var(--color-on-surface);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ============================================
+   品牌渐变 - Brand Gradients
+   ============================================ */
+.bg-sakura-gradient {
+    background: linear-gradient(135deg, #ffb7c5 0%, #deccfd 100%);
+}
+
+.bg-soft-gradient {
+    background: linear-gradient(135deg, #ffb7c5 0%, #deccfd 100%);
+}
+
+.text-sakura-gradient {
+    background: linear-gradient(135deg, #ffb7c5 0%, #deccfd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   卡片样式 - Card Styles
+   ============================================ */
+.card {
+    background-color: var(--color-pale-pink-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 183, 197, 0.2);
+}
+
+.card-elevated {
+    background-color: var(--color-surface-container-lowest);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 183, 197, 0.1);
+}
+
+/* ============================================
+   按钮样式 - Button Styles
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary-container) 0%, #deccfd 100%);
+    color: var(--color-on-primary-container);
+    box-shadow: 0 4px 16px rgba(255, 183, 197, 0.4);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn-secondary {
+    background-color: var(--color-surface-container-lowest);
+    color: var(--color-on-surface);
+    border: 1px solid var(--color-outline-variant);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-surface-container-low);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--color-outline);
+}
+
+.btn-ghost:hover {
+    background-color: var(--color-surface-container-low);
+    color: var(--color-on-surface);
+}
+
+.btn-income {
+    background-color: var(--color-income);
+    color: white;
+}
+
+.btn-expense {
+    background-color: var(--color-expense);
+    color: white;
+}
+
+/* ============================================
+   输入框样式 - Input Styles
+   ============================================ */
+.input-field {
+    width: 100%;
+    padding: var(--space-md);
+    padding-left: 48px;
+    background-color: var(--color-surface-container-lowest);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-primary-container);
+    box-shadow: 0 0 0 4px rgba(255, 183, 197, 0.2);
+}
+
+.input-field::placeholder {
+    color: var(--color-outline);
+    opacity: 0.6;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .material-symbols-outlined {
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-outline);
+    transition: color 0.2s ease;
+}
+
+.input-wrapper:focus-within .material-symbols-outlined {
+    color: var(--color-primary);
+}
+
+/* ============================================
+   导航菜单样式 - Navigation Styles
+   ============================================ */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    color: var(--color-on-surface-variant);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 183, 197, 0.1);
+    color: var(--color-primary);
+}
+
+.nav-item.active {
+    background-color: rgba(255, 183, 197, 0.15);
+    color: var(--color-primary);
+    font-weight: 600;
+    border-left: 3px solid var(--color-primary-container);
+}
+
+.nav-item .material-symbols-outlined {
+    font-size: 24px;
+}
+
+/* ============================================
+   底部标签栏 - Bottom Tab Bar
+   ============================================ */
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: var(--space-sm) 0;
+    padding-bottom: calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--color-outline-variant);
+    z-index: 100;
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: var(--space-sm) var(--space-md);
+    color: var(--color-outline);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.tab-item:hover,
+.tab-item.active {
+    color: var(--color-primary);
+}
+
+.tab-item .material-symbols-outlined {
+    font-size: 24px;
+}
+
+/* ============================================
+   进度条样式 - Progress Bar
+   ============================================ */
+.progress-bar {
+    height: 8px;
+    background-color: var(--color-surface-container-high);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary-container) 0%, #deccfd 100%);
+    border-radius: var(--radius-full);
+    transition: width 0.4s ease;
+}
+
+.progress-fill.warning {
+    background: linear-gradient(90deg, #ffb3ba 0%, #ffdab3 100%);
+}
+
+.progress-fill.danger {
+    background: linear-gradient(90deg, var(--color-expense) 0%, #ff8a9b 100%);
+}
+
+/* ============================================
+   金额显示 - Amount Display
+   ============================================ */
+.amount-income {
+    color: var(--color-income);
+}
+
+.amount-expense {
+    color: var(--color-expense);
+}
+
+.amount-large {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+/* ============================================
+   分类标签 - Category Chips
+   ============================================ */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    background-color: var(--color-surface-container-low);
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    color: var(--color-on-surface-variant);
+    transition: all 0.2s ease;
+}
+
+.chip:hover {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+}
+
+.chip.active {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    font-weight: 600;
+}
+
+.chip-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+/* ============================================
+   交易记录项 - Transaction Item
+   ============================================ */
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: var(--space-md);
+    background-color: var(--color-surface-container-lowest);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-sm);
+    transition: transform 0.2s ease;
+}
+
+.transaction-item:hover {
+    transform: translateX(4px);
+}
+
+.transaction-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: var(--space-md);
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-category {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.transaction-account {
+    font-size: 14px;
+    color: var(--color-outline);
+}
+
+.transaction-remark {
+    font-size: 12px;
+    color: var(--color-outline);
+    margin-top: 2px;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    text-align: right;
+}
+
+.transaction-date {
+    font-size: 12px;
+    color: var(--color-outline);
+    text-align: right;
+    margin-top: 2px;
+}
+
+/* ============================================
+   空状态 - Empty State
+   ============================================ */
+.empty-state {
+    text-align: center;
+    padding: var(--space-xxl);
+    color: var(--color-outline);
+}
+
+.empty-state .icon {
+    font-size: 64px;
+    margin-bottom: var(--space-md);
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ============================================
+   工具类 - Utility Classes
+   ============================================ */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.container-full {
+    padding: 0 var(--space-md);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-sm {
+    gap: var(--space-sm);
+}
+
+.gap-md {
+    gap: var(--space-md);
+}
+
+.gap-lg {
+    gap: var(--space-lg);
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mb-md {
+    margin-bottom: var(--space-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--space-lg);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-sm {
+    font-size: 14px;
+}
+
+.text-lg {
+    font-size: 18px;
+}
+
+.text-outline {
+    color: var(--color-outline);
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+/* ============================================
+   动画 - Animations
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s ease;
+}
+
+/* ============================================
+   响应式 - Responsive
+   ============================================ */
+@media (max-width: 576px) {
+    .hide-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+    }
+}
